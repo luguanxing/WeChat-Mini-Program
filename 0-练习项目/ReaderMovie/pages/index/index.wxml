@@ -1,0 +1,7 @@
+<view class='container'>
+  <image class='qoobee' src='/images/qoobee.jpg'></image>
+  <text class='user-name'>你好,lgx</text>
+  <view class='button-container' bindtap='onTap'>
+    <text class='button'>打开小程序</text>
+  </view>
+</view>

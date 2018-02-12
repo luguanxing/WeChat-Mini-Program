@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qoobee {
+  width:200rpx;
+  height:200rpx;
+  margin-top: 150rpx;
+}
+
+.user-name {
+  margin-top: 100rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.button-container {
+  margin-top: 200rpx;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-align: center;
+  width: 200rpx;
+  height: 80rpx;
+}
+
+.button {
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+}
+
+page {
+  height: 100%;
+  background-color: #abc;
+}

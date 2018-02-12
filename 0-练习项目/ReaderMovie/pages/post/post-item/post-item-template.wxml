@@ -1,0 +1,20 @@
+<template name="postItem">
+
+    <view class='post-container'>
+      <view class='post-author-date'>
+        <image class='post-author' src='{{authorImage}}'></image>
+        <text class='post-date'>{{postDate}}</text>
+      </view>
+      <text class='post-title'>{{postTitle}}</text>
+      <image mode="widthFix" class='post-image' src='{{postImage}}'></image>
+      <text class='post-content'>{{postContent}}</text>
+      <view class='post-like'>
+        <!-- 模板中的路径最好不要是相对路径，否则不同位置的文件引用模板可能失败 -->
+        <image class='post-like-image' src='/images/icon/chat.png'></image>
+        <text class='post-like-font'>{{postLikeNum}}</text>
+        <image class='post-like-image' src='/images/icon/view.png'></image>
+        <text class='post-like-font'>{{postViewNum}}</text>
+      </view>
+    </view>
+
+</template>

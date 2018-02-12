@@ -1,0 +1,9 @@
+<import src="/pages/movie/star/star.wxml" />
+
+<template name="filmTemplate">
+  <view>
+    <image src='/images/dkek.jpg'></image>
+    <text>电影名字</text>
+    <template is="starTemplate" />
+  </view>
+</template>
