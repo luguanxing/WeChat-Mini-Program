@@ -3,6 +3,7 @@ App({
   globalData: {
     g_isPlaying : false,
     g_currentPlayingId : null,
+    g_doubanBase: "http://t.yushu.im",
   },
 
   /**

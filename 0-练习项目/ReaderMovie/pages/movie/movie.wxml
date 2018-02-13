@@ -1,7 +1,13 @@
 <import src="/pages/movie/film-list/film-list.wxml" />
 
-<view>
-  <template is="filmListTemplate" />
-  <template is="filmListTemplate" />
-  <template is="filmListTemplate" />
+<view class="container" >
+  <view class='film-template'>
+    <template is="filmListTemplate" />
+  </view>
+  <view class='film-template'>
+    <template is="filmListTemplate" />
+  </view>
+  <view class='film-template'>
+    <template is="filmListTemplate" />
+  </view>
 </view>

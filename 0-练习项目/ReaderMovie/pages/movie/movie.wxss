@@ -1,1 +1,10 @@
-/* pages/movie/movie.wxss */
+/*模板嵌套，只引用下一层，不引用更深层*/
+@import "film-list/film-list.wxss";
+
+.container {
+  background-color: #f2f2f2;
+}
+
+.film-template {
+  margin-bottom: 30rpx;
+}

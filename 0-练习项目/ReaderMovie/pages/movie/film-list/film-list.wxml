@@ -1,16 +1,20 @@
 <import src="/pages/movie/film/film.wxml" />
 
-<template  name="filmListTemplate">
-  <view>
-    <view>
-      <text>正在热映</text>
-      <view>
-        <text>更多</text>
-        <image src="/images/icon/arrow-right.png"></image>
+<template name="filmListTemplate">
+  <view class='film-list-container'>
+    <view class='inner-container'>
+      <view class='film-head'>
+        <text class='slogan'>正在热映</text>
+        <view class='more'>
+          <text class='more-text'>更多</text>
+          <image class='more-img' src="/images/icon/arrow-right.png"></image>
+        </view>
+        <view class='films-container'>
+          <template is="filmTemplate" />
+          <template is="filmTemplate" />
+          <template is="filmTemplate" />
+        </view>
       </view>
-      <template is="filmTemplate" />
-      <template is="filmTemplate" />
-      <template is="filmTemplate" />
     </view>
   </view>
 </template>
