@@ -4,15 +4,15 @@
   <view class='film-list-container'>
     <view class='inner-container'>
       <view class='film-head'>
-        <text class='slogan'>正在热映</text>
+        <text class='slogan'>{{categoryTitle}}</text>
         <view class='more'>
           <text class='more-text'>更多</text>
           <image class='more-img' src="/images/icon/arrow-right.png"></image>
         </view>
         <view class='films-container'>
-          <template is="filmTemplate" />
-          <template is="filmTemplate" />
-          <template is="filmTemplate" />
+          <block wx:for="{{films}}" wx:for-item="film">
+            <template is="filmTemplate" data="{{...film}}"/>
+          </block>
         </view>
       </view>
     </view>

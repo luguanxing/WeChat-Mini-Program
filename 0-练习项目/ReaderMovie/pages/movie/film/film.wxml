@@ -2,8 +2,8 @@
 
 <template name="filmTemplate">
   <view class='film-container'>
-    <image class='film-img' src='/images/dkek.jpg'></image>
-    <text class='film-title'>电影名字</text>
-    <template is="starTemplate" />
+    <image class='film-img' src='{{image}}'></image>
+    <text class='film-title'>{{title}}</text>
+    <template is="starTemplate" data="{{stars:stars, socre:average}}"/>
   </view>
 </template>
