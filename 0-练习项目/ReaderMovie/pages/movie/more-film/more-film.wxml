@@ -1,0 +1,3 @@
+<import src="../film-grid/film-grid-template.wxml" />
+
+<template is="moreTemplate" data="{{films}}" />

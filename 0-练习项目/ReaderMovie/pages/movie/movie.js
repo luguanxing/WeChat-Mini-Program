@@ -26,8 +26,8 @@ Page({
       url: url,
       method: 'GET',
       success: function (res) {
-        console.log("调用成功");
-        console.log(res);
+        // console.log("调用成功");
+        // console.log(res);
         //处理数据
         that.formatDoubanData(res.data, key, categoryTitle);
       },
@@ -35,6 +35,13 @@ Page({
         console.log("调用失败");
         console.log(err);
       }
+    })
+  },
+
+  onMoreTap: function(event) {
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: 'more-film/more-film?category=' + category,
     })
   },
 
