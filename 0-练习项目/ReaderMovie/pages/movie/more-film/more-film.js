@@ -5,7 +5,10 @@ Page({
 
   data: {
     navigateTitle:"",
-    films: {}
+    films: {},
+    requestUrl: "",
+    totalCount: 0,
+    isEmpty:true,
   },
 
   onLoad: function (options) {
@@ -23,9 +26,11 @@ Page({
         dataUrl = app.globalData.g_doubanBase + '/v2/movie/coming_soon';
         break;
     }
+    this.data.requestUrl = dataUrl;
     util.http(dataUrl, this.showDoubanData);
   },
 
+  //设置页面的model，展示数据
   showDoubanData : function(data) {
     var films = [];
     for (var index in data.subjects) {
@@ -42,7 +47,21 @@ Page({
       }
       films.push(temp);
     }
-    this.setData({ films });
+    var totalFilms = {};
+    if (!this.data.isEmpty) {      //不是第一次加载时追加内容
+      totalFilms = this.data.films.concat(films);
+    } else {     //第一次加载时初始化内容
+      totalFilms = films;
+      this.data.isEmpty = false;
+    }
+    this.setData({ films : totalFilms });
+    this.data.totalCount += 20;
+  },
+
+  //下拉框响应
+  onScrollLower : function(event) {
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    util.http(nextUrl, this.showDoubanData);
   },
 
   onReady: function(event) {
