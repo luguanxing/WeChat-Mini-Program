@@ -48,20 +48,40 @@ Page({
       films.push(temp);
     }
     var totalFilms = {};
-    if (!this.data.isEmpty) {      //不是第一次加载时追加内容
+    if (!this.data.isEmpty) {      //不是第一次加载初始化时追加内容
       totalFilms = this.data.films.concat(films);
-    } else {     //第一次加载时初始化内容
+    } else {     //第一次加载时或刷新后初始化内容和状态(我认为totalCount也应清空，重新开始否则showDoubanData中不应该让totalCount+=20)
       totalFilms = films;
       this.data.isEmpty = false;
+      this.data.totalCount = 0;
     }
     this.setData({ films : totalFilms });
     this.data.totalCount += 20;
+    wx.hideNavigationBarLoading();  //取数据完成后取消loading状态
+    wx.stopPullDownRefresh(); //停止下拉刷新
   },
 
-  //下拉框响应
-  onScrollLower : function(event) {
+  // 下滑加载无法和下拉刷新同时使用，改用view和onReachBottom，不用onScrollLower
+  //下滑到底部响应
+  // onScrollLower : function(event) {
+  //   var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+  //   wx.showNavigationBarLoading();  //取数据开始前设置loading状态
+  //   util.http(nextUrl, this.showDoubanData);
+  // },
+  //下滑到底部响应
+  onReachBottom: function (event) {
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    wx.showNavigationBarLoading();  //取数据开始前设置loading状态
     util.http(nextUrl, this.showDoubanData);
+  },
+
+  //下拉刷新数据
+  onPullDownRefresh:function(event) {
+    var refreshUrl = this.data.requestUrl + "?start=0&count=20";
+    this.data.films = {};  //重置状态
+    this.data.isEmpty = true;
+    wx.showNavigationBarLoading();  //取数据开始前设置loading状态
+    util.http(refreshUrl, this.showDoubanData);
   },
 
   onReady: function(event) {
