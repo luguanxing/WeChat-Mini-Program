@@ -7,7 +7,11 @@ Page({
   data: {
     inThreaters : {},
     comingSoon : {},
-    top250 : {}
+    top250 : {},
+    searchResult : {},
+    containerShow : true,
+    searchPannelShow : false,
+    searchText: "",
   },
 
   onLoad: function (options) {
@@ -38,6 +42,7 @@ Page({
     })
   },
 
+  //点击更多
   onMoreTap: function(event) {
     var category = event.currentTarget.dataset.category;
     wx.navigateTo({
@@ -45,6 +50,7 @@ Page({
     })
   },
 
+  //处理数据设置model
   formatDoubanData: function (data, key, categoryTitle) {
     var films = [];
     for (var index in data.subjects) {
@@ -69,5 +75,33 @@ Page({
     };
     this.setData(readyData);
   },
+
+  //搜索栏获取焦点
+  onBindFocus: function (event) {
+    console.log('搜索栏获取焦点');
+    this.setData({
+      containerShow: false,
+      searchPannelShow: true
+    })
+  },
+
+  //搜索栏失去焦点或回车，进行搜索
+  onBindChange: function (event) {
+    console.log('搜索光标离开');
+    var text = event.detail.value;
+    var searchUrl = app.globalData.g_doubanBase + "/v2/movie/search?q=" + text;
+    this.getMovieListData(searchUrl, "searchResult", "");
+  },
+
+  //点击X关闭搜索，要清空内容
+  onCancelImgTap : function(event) {
+    console.log('关闭搜索');
+    this.setData({
+      containerShow: true,
+      searchPannelShow: false,
+      searchResult : {},
+      searchText : "",
+    })
+  }
 
 })
