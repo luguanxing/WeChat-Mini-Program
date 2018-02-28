@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/movie/film-detail/film-detail",
     "pages/post/post",
     "pages/index/index",
     "pages/movie/movie",
