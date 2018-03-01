@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/movie/film-detail/film-detail",
     "pages/post/post",
     "pages/index/index",
     "pages/movie/movie",
     "pages/movie/more-film/more-film",
+    "pages/movie/film-detail/film-detail",
     "pages/post/post-detail/post-detail"
   ],
   "window":{

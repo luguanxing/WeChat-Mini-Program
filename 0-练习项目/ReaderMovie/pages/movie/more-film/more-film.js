@@ -89,6 +89,14 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.navigateTitle,
     })
+  },
+
+  //跳转到详情页面
+  onFilmTap: function (event) {
+    var id = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../film-detail/film-detail?id=' + id,
+    })
   }
 
 })

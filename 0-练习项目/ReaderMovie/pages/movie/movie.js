@@ -102,6 +102,15 @@ Page({
       searchResult : {},
       searchText : "",
     })
+  },
+
+  //跳转到详情页面
+  onFilmTap : function(event) {
+    var id = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'film-detail/film-detail?id=' + id,
+    })
   }
+
 
 })
